@@ -1,0 +1,20 @@
+https://leetcode.com/problems/search-a-2d-matrix-ii
+https://leetcode.com/problems/search-a-2d-matrix
+
+class Solution {
+    public boolean searchMatrix(int[][] mat, int ele) {
+          int r = 0;
+		int c = mat[0].length - 1;
+		while (r < mat.length && c >= 0) {
+			if (mat[r][c] == ele) {
+				return true;
+			} else if (mat[r][c] > ele) {
+				c--;
+			} else {
+				r++;
+			}
+		}
+		return false;
+
+    }
+}
