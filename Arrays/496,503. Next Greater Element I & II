@@ -1,4 +1,5 @@
 https://leetcode.com/problems/next-greater-element-ii/
+https://leetcode.com/problems/next-greater-element-i/
 
 class Solution {
     public int[] nextGreaterElements(int[] nums) {
