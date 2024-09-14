@@ -1,0 +1,37 @@
+https://leetcode.com/problems/spiral-matrix/description
+
+
+class Solution {
+    public List<Integer> spiralOrder(int[][] mat) {
+        List<Integer> ans = new ArrayList<>();
+        int min_c=0;
+        int min_r=0;
+        int max_r=mat.length-1;
+        int max_c=mat[0].length-1;
+        int cnt=0;
+        int te=mat.length*mat[0].length;
+        while(min_r<=max_r && min_c<=max_c){
+        for(int c=min_c;c<=max_c && cnt< te;c++){
+          ans.add(mat[min_r][c]); 
+          cnt++; 
+        }
+        for(int r=min_r+1;r<=max_r && cnt< te;r++){
+          ans.add(mat[r][max_c]);  
+          cnt++;
+        }
+        for(int c=max_c-1;c>=min_c && cnt< te;c--){
+            ans.add(mat[max_r][c]); 
+            cnt++;
+        }
+        for(int r=max_r-1;r>=min_r+1 && cnt< te;r--){
+          ans.add(mat[r][min_c]);
+          cnt++;  
+        } 
+        min_r++;
+        min_c++;
+        max_r--;
+        max_c--;
+        }
+        return ans;
+    }
+}
