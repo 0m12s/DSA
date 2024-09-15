@@ -165,4 +165,93 @@ public class base {
 		prev.next = after;
 		return curr.data;
 	}
+
+	public void rev() { // iterative approach!!
+		node curr = head;
+		node prev = null;
+		while (curr != null) {
+			node after = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = after;
+		}
+		head = prev;
+	}
+
+	public void rev2() {
+		node temp = head;
+		rev2(head);
+		temp.next = null;
+	}
+
+	private void rev2(node prev) {
+		if (prev.next == null) {
+			head = prev;
+			return;
+		}
+		node curr = prev.next;
+		rev2(curr);
+		curr.next = prev;
+	}
+
+	public int getmid() {
+		node slow = head;
+		node fast = head;
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = slow.next.next;
+		}
+		return slow.data;
+	}
+
+	public int lastKdist(int k) {
+		node c2 = head;
+		for (int i = 0; i < k; i++) {
+			c2 = c2.next;
+		}
+		node c1 = head;
+		while (c2 != null) {
+			c1 = c1.next;
+			c2 = c2.next;
+		}
+		return c1.data;
+	}
+
+	public void Krev(int k) {
+		node nn = head;
+		Stack<node> s = new Stack<>();
+		node last = null;
+		node start=null;
+		while (nn != null) {
+			node after = nn.next;
+			s.add(nn);
+			if (s.size() == k) { //for k multiple
+				while (!s.isEmpty()) {
+					node curr = s.pop();
+					if (last == null) {
+						start=curr;
+						last = curr;
+					} else {
+						last.next = curr;
+						last = curr;
+					}
+				}
+			}
+			nn = after;
+		}
+		//if not a multiple of k, remaining elements
+		while (!s.isEmpty()) {
+			node curr = s.pop();
+			if (last == null) {
+				start=curr;
+				last = curr;
+			} else {
+				last.next = curr;
+				last = curr;
+			}
+		}
+		
+		head=start;
+		last.next = null;
+	}
 }
