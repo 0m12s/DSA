@@ -5,7 +5,7 @@ public class Client {
 
 			Student s = new Student(12, "Chottu");
 			try {
-				s.setAge(13);
+				s.setAge(13):
 				System.out.println(s.getAge());
 				s.setAge(-20);
 				System.out.println(s.getAge());
