@@ -1,5 +1,7 @@
 package LinkedLst;
 
+import java.util.Stack;
+
 public class base {
 	class node {
 		public node(int ali) {
@@ -15,9 +17,11 @@ public class base {
 	public void disp() { // display data on each node !!
 		node temp = head;
 		while (temp != null) {
-			System.out.print(temp.data + " ==>"+" ");
+			System.out.print(temp.data + " =>" + " ");
 			temp = temp.next;
 		}
+		System.out.print("NULL");
+		System.out.println();
 	}
 
 	public int size() {
@@ -53,7 +57,7 @@ public class base {
 			throw new RuntimeException("khali hai bhyi");
 		}
 		node temp = head;
-		while (temp.next == null) {
+		while (temp.next != null) {
 			temp = temp.next;
 		}
 		return temp;
@@ -221,15 +225,15 @@ public class base {
 		node nn = head;
 		Stack<node> s = new Stack<>();
 		node last = null;
-		node start=null;
+		node start = null;
 		while (nn != null) {
 			node after = nn.next;
 			s.add(nn);
-			if (s.size() == k) { //for k multiple
+			if (s.size() == k) { // for k multiple
 				while (!s.isEmpty()) {
 					node curr = s.pop();
 					if (last == null) {
-						start=curr;
+						start = curr;
 						last = curr;
 					} else {
 						last.next = curr;
@@ -239,19 +243,52 @@ public class base {
 			}
 			nn = after;
 		}
-		//if not a multiple of k, remaining elements
+		// if not a multiple of k, remaining elements
 		while (!s.isEmpty()) {
 			node curr = s.pop();
 			if (last == null) {
-				start=curr;
+				start = curr;
 				last = curr;
 			} else {
 				last.next = curr;
 				last = curr;
 			}
 		}
-		
-		head=start;
+
+		head = start;
 		last.next = null;
 	}
+
+	public boolean chainExts() {
+		node slow = head;
+		node fast = head;
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+			if (slow == fast) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public void break_cycle() {
+		node slow = head;
+		node fast = head;
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+			if (slow == fast) {
+				break;
+			}
+		}
+		node car1 = head;
+		node car2 = slow;
+		while (car1.next != car2.next) {
+			car1 = car1.next;
+			car2 = car2.next;
+		}
+		car2.next = null;
+	}
+
 }
