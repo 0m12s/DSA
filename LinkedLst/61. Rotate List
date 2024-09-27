@@ -1,0 +1,28 @@
+https://leetcode.com/problems/rotate-list
+
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+        if(head==null || head.next==null || k==0){
+            return head;
+        }
+        ListNode cur = head;
+        int size = 1;
+        while (cur.next != null) {
+            cur = cur.next;
+            size++;
+        }
+        k = size - (k % size);
+        cur.next = head;
+        while (k > 0) {
+            cur = cur.next;
+            if (k == 0) {
+                cur.next = null;
+                break;
+            }
+            k--;
+        }
+        head = cur.next;
+        cur.next = null;
+        return head;
+    }
+}
