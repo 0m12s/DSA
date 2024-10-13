@@ -6,7 +6,7 @@ class Solution {
         int high=nums.length-2;
         while(low<=high){
             int mid=(low+high)/2;
-            if(nums[mid]==nums[mid^1]){
+            if(nums[mid]==nums[mid^1]){ //XOR to check if thats left half or not
                 low=mid+1;
             }
             else{
