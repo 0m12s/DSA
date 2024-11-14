@@ -1,0 +1,47 @@
+https://leetcode.com/problems/min-stack
+
+class MinStack {
+    Stack<Long> st = new Stack<>();
+    Long mini;
+
+  
+    public MinStack() {
+        mini = Long.MAX_VALUE;
+    }
+
+    public void push(int value) {
+        long val = (long) value;  
+        if (st.isEmpty()) {
+            mini = val;
+            st.push(val);
+        } else {
+            if (val < mini) {
+                st.push(2 * val - mini);
+                mini = val;
+            } else {
+                st.push(val);
+            }
+        }
+    }
+
+    public void pop() {
+        if (st.isEmpty()) return;
+
+        long val = st.pop();
+        if (val < mini) {
+            mini = 2 * mini - val;
+        }
+    }
+
+    public int top() {
+        long val = st.peek();
+        if (val < mini) {
+            return (int) (long) mini;  
+        }
+        return (int) val;  
+    }
+
+    public int getMin() {
+        return (int) (long) mini;  
+    }
+}
