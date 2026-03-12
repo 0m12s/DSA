@@ -116,13 +116,12 @@ Open the project in **IntelliJ IDEA / VS Code / Eclipse** and run the Java files
 
 **Om**
 
-Java Backend Developer
+Java Developer
 Passionate about **problem solving, backend systems, and scalable software design**
 
-GitHub
-https://github.com/Om12s
+Leetcode
+https://leetcode.com/u/SD_Om12/
 
 ---
 
-⭐ If you find this repository useful, consider **starring the project**.
 
