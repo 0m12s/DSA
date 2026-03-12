@@ -113,13 +113,6 @@ Open the project in **IntelliJ IDEA / VS Code / Eclipse** and run the Java files
 
 ---
 
-## 👨‍💻 Author
-
-**Om**
-
-Java Developer
-Passionate about **problem solving, backend systems, and scalable software design**
-
 Leetcode
 https://leetcode.com/u/SD_Om12/
 
